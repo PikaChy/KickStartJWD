@@ -1,10 +1,10 @@
 package edu.etc.by.kickstart.action;
 
 import edu.etc.by.kickstart.entity.Cube;
+import edu.etc.by.kickstart.entity.Point;
 import edu.etc.by.kickstart.entity.Square;
 
 public class CubeActionsImpl implements CubeActions {
-    private static final int CHECKED_EDGES = 2;
     private static final ExecutorImpl executor = new ExecutorImpl();
 
     @Override
@@ -24,31 +24,29 @@ public class CubeActionsImpl implements CubeActions {
     @Override
     public boolean isBasedOnCoordinatePlane(Cube cube) {
         boolean isBased = false;
-        Square[] cubeEdges = new Square[CHECKED_EDGES];
-        cubeEdges[0] = cube.getBotSquare();
-        cubeEdges[1] = cube.getTopSquare();
 
-        for (int i = 0; i < CHECKED_EDGES; i++) {
-            Square checkingSquare = cubeEdges[i];
-            if (isBasedOnCoordinatePlane(checkingSquare)) {
-                isBased = true;
-            }
-
+        Square botSquare = cube.getBotSquare();
+        Square topSquare = cube.getTopSquare();
+        if ((isBasedOnCoordinatePlane(botSquare) ||
+                (isBasedOnCoordinatePlane(topSquare)))) {
+            isBased = true;
         }
         return isBased;
     }
 
     private boolean isBasedOnCoordinatePlane(Square square) {
         boolean isBased = false;
+        Point leftBotCorner = square.getLeftBotCorner();
+        Point leftTopCorner = square.getLeftTopCorner();
 
-        if ((((square.getLeftBotCorner().getX() == 0) && (square.getLeftTopCorner().getX() == 0)) &&
-                (square.getRightBotCorner().getX() == 0)) && (square.getRightTopCorner().getX() == 0)) {
+        if ((((leftBotCorner.getX() == 0) && (leftTopCorner.getX() == 0)) &&
+                (leftBotCorner.getX() == 0)) && (leftTopCorner.getX() == 0)) {
             isBased = true;
-        } else if ((((square.getLeftBotCorner().getY() == 0) && (square.getLeftTopCorner().getY() == 0)) &&
-                (square.getRightBotCorner().getY() == 0)) && (square.getRightTopCorner().getY() == 0)) {
+        } else if ((((leftBotCorner.getY() == 0) && (leftTopCorner.getY() == 0)) &&
+                (leftBotCorner.getY() == 0)) && (leftTopCorner.getY() == 0)) {
             isBased = true;
-        } else if ((((square.getLeftBotCorner().getZ() == 0) && (square.getLeftTopCorner().getZ() == 0)) &&
-                (square.getRightBotCorner().getZ() == 0)) && (square.getRightTopCorner().getZ() == 0)) {
+        } else if ((((leftBotCorner.getZ() == 0) && (leftTopCorner.getZ() == 0)) &&
+                (leftBotCorner.getZ() == 0)) && (leftTopCorner.getZ() == 0)) {
             isBased = true;
         }
 

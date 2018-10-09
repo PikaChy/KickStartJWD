@@ -9,6 +9,7 @@ public class Cube implements Serializable {
     private Square botSquare;
 
     public Cube(Square topSquare, Square botSquare) {
+        //TODO:Should we catch NPE?
         this.topSquare = topSquare;
         this.botSquare = botSquare;
     }
@@ -38,14 +39,14 @@ public class Cube implements Serializable {
     @Override
     public int hashCode() {
         int result = 11;
-        result = 53 * result + getTopSquare().hashCode() + getBotSquare().hashCode();
+        result = 53 * result + this.topSquare.hashCode() + this.botSquare.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
         return getClass().getName() + "{" +
-                getTopSquare() + "," + getBotSquare() +
+                this.topSquare + "," + this.botSquare +
                 '}';
     }
 }

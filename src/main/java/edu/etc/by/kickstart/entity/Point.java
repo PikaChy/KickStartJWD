@@ -42,14 +42,14 @@ public class Point implements Serializable {
         }
 
         Point point = (Point) obj;
-        return getX() == point.getX() &&
-                getY() == point.getY() && getZ() == point.getZ();
+        return this.x == point.getX() &&
+                this.y == point.getY() && this.z == point.getZ();
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result *= (int) Double.doubleToLongBits(37 * getX() + 31 * getY() + 29 * getZ());
+        result *= (int) Double.doubleToLongBits(37 * this.x + 31 * this.y + 29 * this.z);
         return result;
     }
 }

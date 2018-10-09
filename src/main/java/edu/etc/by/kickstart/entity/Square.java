@@ -10,6 +10,7 @@ public class Square implements Serializable {
     private Point leftBotCorner;
 
     public Square(Point leftTopCorner, Point rightTopCorner, Point rightBotCorner, Point leftBotCorner) {
+        //TODO:Should we catch NPE?
         this.leftTopCorner = leftTopCorner;
         this.rightTopCorner = rightTopCorner;
         this.rightBotCorner = rightBotCorner;
@@ -35,8 +36,8 @@ public class Square implements Serializable {
 
     @Override
     public String toString() {
-        return getClass() + "{ " + getLeftTopCorner() + "," + getRightTopCorner() + "," +
-                getRightBotCorner() + "," + getLeftBotCorner() + " }";
+        return getClass() + "{ " + this.leftTopCorner + "," + this.rightTopCorner + "," +
+                this.rightBotCorner + "," + this.leftBotCorner + " }";
     }
 
     @Override
@@ -49,17 +50,17 @@ public class Square implements Serializable {
         }
 
         Square square = (Square) obj;
-        return getLeftTopCorner().equals(square.getLeftTopCorner()) &&
-                getRightTopCorner().equals(square.getRightTopCorner()) &&
-                getRightBotCorner().equals(square.getRightBotCorner()) &&
-                getLeftBotCorner().equals(square.getLeftBotCorner());
+        return this.leftTopCorner.equals(square.getLeftTopCorner()) &&
+                this.rightTopCorner.equals(square.getRightTopCorner()) &&
+                this.rightBotCorner.equals(square.getRightBotCorner()) &&
+                this.leftBotCorner.equals(square.getLeftBotCorner());
     }
 
     @Override
     public int hashCode() {
         int result = 17;
-        result = 13 * result + getLeftTopCorner().hashCode() + getRightTopCorner().hashCode() +
-                getLeftBotCorner().hashCode() + getRightBotCorner().hashCode();
+        result = 13 * result + this.leftTopCorner.hashCode() + this.rightTopCorner.hashCode() +
+                this.leftBotCorner.hashCode() + this.rightBotCorner.hashCode();
         return result;
     }
 }

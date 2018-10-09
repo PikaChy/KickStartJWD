@@ -1,8 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Calculating tests">
+<suite name="Unit tests">
 
-    <test name="Math">
-
+    <test name="KickStart">
         <groups>
             <define name="All">
                 <include name="Surface"/>
@@ -14,9 +13,7 @@
                 <include name="Validator"/>
             </define>
             <run>
-
                 <include name="All"/>
-
             </run>
 
         </groups>

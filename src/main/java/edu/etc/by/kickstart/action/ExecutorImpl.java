@@ -6,8 +6,12 @@ import edu.etc.by.kickstart.entity.Square;
 public class ExecutorImpl implements Executor {
     @Override
     public double calcDistance(Point validBeginPoint, Point validEndPoint) {
-        return Math.sqrt(Math.pow((validBeginPoint.getX() - validEndPoint.getX()), 2) +
-                Math.pow((validBeginPoint.getY() - validEndPoint.getY()), 2) + Math.pow((validBeginPoint.getZ() - validEndPoint.getZ()), 2));
+        double squareDifferenceXCoordinates = Math.pow((validBeginPoint.getX() - validEndPoint.getX()), 2);
+        double squareDifferenceYCoordinates = Math.pow((validBeginPoint.getY() - validEndPoint.getY()), 2);
+        double squareDifferenceZCoordinates = Math.pow((validBeginPoint.getZ() - validEndPoint.getZ()), 2);
+
+        return Math.sqrt(squareDifferenceXCoordinates + squareDifferenceYCoordinates
+                + squareDifferenceZCoordinates);
     }
 
     public boolean haveEqualSize(Square firstValidSquare, Square secondValidSquare) {
