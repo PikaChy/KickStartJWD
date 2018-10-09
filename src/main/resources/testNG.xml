@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Calculating tests">
+
+    <test name="Math">
+
+        <groups>
+            <define name="All">
+                <include name="Surface"/>
+                <include name="Volume"/>
+                <include name="Distance"/>
+                <include name="Square"/>
+                <include name="Builder"/>
+                <include name="Parser"/>
+                <include name="Validator"/>
+            </define>
+            <run>
+
+                <include name="All"/>
+
+            </run>
+
+        </groups>
+
+        <classes>
+            <class name="edu.etc.by.kickstart.builder.BuilderTest"/>
+            <class name="edu.etc.by.kickstart.action.CubeActionsTest"/>
+            <class name="edu.etc.by.kickstart.action.ExecutorTest"/>
+            <class name="edu.etc.by.kickstart.parser.ParserTest"/>
+            <class name="edu.etc.by.kickstart.validator.ValidatorTest"/>
+        </classes>
+
+    </test>
+
+</suite>
